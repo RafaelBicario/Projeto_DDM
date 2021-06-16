@@ -32,17 +32,17 @@ CREATE TABLE dados(
 );
 ''';
 
-final inserts = '''
+final insert1 = '''
 INSERT INTO especies (nome)
 VALUES('Pastor Alemão')
 ''';
 
-final inserts2 = '''
+final insert2 = '''
 INSERT INTO veterinario (nome,telefone,email,cpf)
 VALUES('Redrigo','4411111111','rodrigo@outlook.com','12312312312')
 ''';
 
-final inserts3 = '''
+final insert3 = '''
 INSERT INTO dados (id_especies,telefone,descricao, valor,id_veterinario)
 VALUES('1','4422222222,'Castração',20.00,'1')
 ''';
