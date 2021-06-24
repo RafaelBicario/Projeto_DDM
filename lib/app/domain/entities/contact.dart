@@ -6,5 +6,8 @@ class Contact {
   Contact(
       {required this.id_dados,
       required this.telefone,
-      required this.descricao});
+      required this.descricao,
+      valor});
+
+  get valor => null;
 }
