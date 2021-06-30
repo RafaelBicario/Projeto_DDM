@@ -3,7 +3,7 @@ class Contact {
   String telefone;
   String descricao;
 
-  Contact(
+  Contact(telefone,
       {required this.id_dados,
       required this.telefone,
       required this.descricao,

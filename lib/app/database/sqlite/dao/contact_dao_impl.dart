@@ -16,7 +16,8 @@ class ContactDAOimpl implements ContactDao {
       return Contact(
           telefone: linha['telefone'],
           descricao: linha['descricao'],
-          valor: linha['valor']);
+          valor: linha['valor'],
+          id_dados: linha['id']);
     });
   }
 
