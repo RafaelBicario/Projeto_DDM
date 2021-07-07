@@ -5,40 +5,44 @@ import 'package:sqflite/sqflite.dart';
 import '../connection.dart';
 
 class ContactDAOimpl implements ContactDao {
-  Database _db;
+  Database? _db;
 
   @override
   Future<List<Contact>> find() async {
     _db = await Connection.get();
-    List<Map<String, dynamic>> resultado = await _db.query('contact');
+    List<Map<String, dynamic>> resultado = await _db!.query('contact');
     List<Contact> lista = List.generate(resultado.length, (i) {
       var linha = resultado[i];
       return Contact(
           telefone: linha['telefone'],
           descricao: linha['descricao'],
           valor: linha['valor'],
-          id_dados: linha['id']);
+          id: linha['id'],
+          raca: linha['raca']);
     });
   }
 
   @override
   remove(int id) async {
     _db = await Connection.get();
-    var sql = 'DELETE FROM dados WHERE id_dados = ?';
-    _db.rawDelete(sql, [id]);
+    var sql = 'DELETE FROM dados WHERE id = ?';
+    _db!.rawDelete(sql, [id]);
   }
 
   @override
   save(Contact contact) async {
     _db = await Connection.get();
     var sql;
-    if (contact.id_dados == null) {
-      sql = 'INSERT INTO dados (telefone, descricao, valor) VALUES(?,?,?)';
-      _db.rawInsert(sql, [contact.telefone, contact.descricao, contact.valor]);
+    if (contact.id == null) {
+      sql =
+          'INSERT INTO dados (raca, telefone, descricao, valor) VALUES(?,?,?,?)';
+      _db!.rawInsert(sql,
+          [contact.raca, contact.telefone, contact.descricao, contact.valor]);
     } else {
       sql =
-          'UPDATE dados SET telefone = ?, telefone = ?, descricao = ?,  = ? WHERE id_dados = ? ';
-      _db.rawUpdate(sql, [id]);
+          'UPDATE dados SET raca =?, telefone = ?, descricao = ?, descricao = ?,  = ? WHERE id = ? ';
+      _db!.rawUpdate(sql,
+          [contact.raca, contact.telefone, contact.descricao, contact.valor]);
     }
   }
 }

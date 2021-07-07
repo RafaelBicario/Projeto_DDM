@@ -1,4 +1,3 @@
-import 'package:flutter_application_1/app/database/sqlite/dao/contact_dao_impl.dart';
 import 'package:flutter_application_1/app/domain/entities/contact.dart';
 import 'package:flutter_application_1/app/domain/exception/domain_layer_exception.dart';
 import 'package:flutter_application_1/app/domain/interfaces/contact_dao.dart';

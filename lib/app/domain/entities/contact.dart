@@ -1,13 +1,17 @@
 class Contact {
-  int id_dados;
+  int id;
+  String raca;
   String telefone;
+  int valor;
   String descricao;
 
-  Contact(telefone,
-      {required this.id_dados,
-      required this.telefone,
-      required this.descricao,
-      valor});
+  Contact({
+    required this.id,
+    required this.raca,
+    required this.telefone,
+    required this.valor,
+    required this.descricao,
+  });
 
-  get valor => null;
+  // get valor => null;
 }
