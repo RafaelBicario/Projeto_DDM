@@ -20,6 +20,7 @@ class ContactDAOimpl implements ContactDao {
           id: linha['id'],
           raca: linha['raca']);
     });
+    return lista;
   }
 
   @override

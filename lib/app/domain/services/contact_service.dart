@@ -12,8 +12,8 @@ class ContactService {
     _dao.save(contact);
   }
 
-  remove(int id_dados) {
-    _dao.remove(id_dados);
+  remove(int id) {
+    _dao.remove(id);
   }
 
   Future<List<Contact>> find() {

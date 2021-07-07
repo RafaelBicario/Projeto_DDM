@@ -5,11 +5,11 @@ import 'package:sqflite/sqflite.dart';
 class Contact extends StatefulWidget {
   const Contact({Key? key}) : super(key: key);
   Future<List<Map<String, dynamic>>> _buscar() async {
-    Database db = await Connection.get();
-    return db.query('dados');
+    Database? db = await Connection.get();
+    return db!.query('dados');
   }
 
-  @override
+  // @override
   Widget build(BuildContext context) {
     return FutureBuilder(
         future: _buscar(),
@@ -18,7 +18,7 @@ class Contact extends StatefulWidget {
             var lista = futuro.data;
             return Scaffold();
           } else {
-            Scaffold();
+            return Scaffold();
           }
         });
   }
