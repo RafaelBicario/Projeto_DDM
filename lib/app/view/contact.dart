@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/database/sqlite/connection.dart';
 import 'package:sqflite/sqflite.dart';
 
-class Contact extends StatefulWidget {
-  const Contact({Key? key}) : super(key: key);
+class Contatos extends StatefulWidget {
+  const Contatos({Key? key}) : super(key: key);
   Future<List<Map<String, dynamic>>> _buscar() async {
     Database? db = await Connection.get();
     return db!.query('dados');
@@ -26,7 +26,7 @@ class Contact extends StatefulWidget {
   _ContactState createState() => _ContactState();
 }
 
-class _ContactState extends State<Contact> {
+class _ContactState extends State<Contatos> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => HomePage(),
-        'contact-form': (context) => Contact()
+        'contact_form': (context) => Contatos()
       },
     );
   }
