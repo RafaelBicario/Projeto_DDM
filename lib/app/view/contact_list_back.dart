@@ -26,7 +26,7 @@ abstract class _ContactListBack with Store {
   }
 
   goToForm(BuildContext context, [Contact contact]) {
-    Navigator.of(context).pushNamed(MyApp.Contatos,arguments: contact).then(refreshList);
+    Navigator.of(context).pushNamed(MyApp.Contact,arguments: contact).then(refreshList);
   }
 
   remove(int id){
