@@ -4,8 +4,12 @@ import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'contact_form_back.dart';
 
 class ContactForm extends StatelessWidget {
+  final _form = GlobalKey<FormState>();
+
   Widget fieldRaca(ContactFormBack back) {
     return TextFormField(
+        validator: back.validateRaca,
+        onSaved: (newValue) => back.contact.raca = newValue,
         initialValue: back.contact.nome,
         decoration: InputDecoration(
             labelText: 'Raça: ', hintText: 'Informe a Raça do Animal'));
@@ -21,6 +25,8 @@ class ContactForm extends StatelessWidget {
   Widget fieldPhone(ContactFormBack back) {
     var mask = MaskTextInputFormatter(mask: '(##) # ####-####');
     return TextFormField(
+        validator: back.validatePhone,
+        onSaved: (newValue) => back.contact.phone = newValue,
         initialValue: back.contact.phone,
         inputFormatters: [mask],
         keyboardType: TextInputType.number,
@@ -41,11 +47,23 @@ class ContactForm extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Cadastro de Atendimentos'),
-        actions: [IconButton(icon: Icon(Icons.save), onPressed: null)],
+        actions: [
+          IconButton(
+              icon: Icon(Icons.save),
+              onPressed: () {
+                _form.currentState!.validate();
+                _form.currentState!.save();
+                if (_back.isValid) {
+                  _back.save();
+                  Navigator.of(context).pop();
+                }
+              })
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
         child: Form(
+          key: _form,
           child: Column(children: [
             fieldRaca(_back),
             fieldDescricao(_back),
