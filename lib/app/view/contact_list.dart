@@ -52,13 +52,7 @@ Widget build(BuildContext context) {
   return Scaffold(
       appBar: AppBar(
         title: Text('Lista de Contatos'),
-        actions: [
-          IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () {
-                Navigator.of(context).pushNamed(MyApp.contact_form);
-              })
-        ],
+        actions: [IconButton(icon: Icon(Icons.add), onPressed: () {})],
       ),
       body: Observer(builder: (context) {
         return FutureBuilder(
@@ -74,6 +68,9 @@ Widget build(BuildContext context) {
                     var contato = lista[i];
                     return ListTile(
                       title: Text(contato.raca),
+                      onTap: () {
+                        _back.goToDetails(context, contato);
+                      },
                       subtitle: Text(contato.telefone),
                       trailing: Container(
                         width: 100,

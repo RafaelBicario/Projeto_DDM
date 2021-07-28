@@ -1,12 +1,8 @@
 import 'package:flutter_application_1/app/domain/services/contact_service.dart';
 import 'package:get_it/get_it.dart';
-import 'package:mobx/mobx.dart';
+// import 'package:mobx/mobx.dart';
 
-part 'contact_form_back.g.dart';
-
-class ContactFormBack = _ContactFormBack with _$ContactFormBack;
-
-abstract class _ContactFormBack with Store {
+class ContactFormBack {
   Contact contact;
   var _service = GetIt.I.get<ContactService>();
   bool _racaIsValid;
@@ -16,7 +12,7 @@ abstract class _ContactFormBack with Store {
 
   bool get isValid => _racaIsValid && _descricaoIsValid && _phoneIsValid;
 
-  _ContactFormBack(BuildContext context) {
+  ContactFormBack(BuildContext context) {
     var parameter = ModalRoute.of(context).settings.arguments;
     contact = (parameter == null) ? Contact() : parameter;
   }
