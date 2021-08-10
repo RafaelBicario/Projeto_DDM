@@ -26,7 +26,7 @@ class ContactDAOimpl implements ContactDao {
   @override
   remove(int id) async {
     _db = await Connection.get();
-    var sql = 'DELETE FROM dados WHERE id = ?';
+    var sql = 'DELETE FROM contact WHERE id = ?';
     _db!.rawDelete(sql, [id]);
   }
 
@@ -36,12 +36,12 @@ class ContactDAOimpl implements ContactDao {
     var sql;
     if (contact.id == null) {
       sql =
-          'INSERT INTO dados (raca, telefone, descricao, valor) VALUES(?,?,?,?)';
+          'INSERT INTO contact (raca, telefone, descricao, valor) VALUES(?,?,?,?)';
       _db!.rawInsert(sql,
           [contact.raca, contact.telefone, contact.descricao, contact.valor]);
     } else {
       sql =
-          'UPDATE dados SET raca =?, telefone = ?, descricao = ?, descricao = ?,  = ? WHERE id = ? ';
+          'UPDATE contact SET raca =?, telefone = ?, descricao = ?, descricao = ?,  = ? WHERE id = ? ';
       _db!.rawUpdate(sql,
           [contact.raca, contact.telefone, contact.descricao, contact.valor]);
     }

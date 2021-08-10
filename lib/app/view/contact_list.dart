@@ -13,83 +13,93 @@ import 'contact_list_back.dart';
 //     Database? db = await Connection.get();
 //     return db!.query('dados');
 //   }
+// }
 
-final _back = ContactListBack();
+class ContactList extends StatefulWidget {
+  const ContactList({Key? key}) : super(key: key);
 
-Widget iconEditButton(Function onPressed) {
-  return IconButton(
-      icon: Icon(Icons.edit), color: Colors.blueGrey, onPressed: onPressed());
+  @override
+  _ContactListState createState() => _ContactListState();
 }
 
-Widget iconRemoveButton(BuildContext context, Function remove) {
-  return IconButton(
-      icon: Icon(Icons.delete),
-      color: Colors.red,
-      onPressed: () {
-        showDialog(
-            context: context,
-            builder: (context) => AlertDialog(
-                  title: Text('Deletar Registro'),
-                  content: Text('Deseja Deletar este registro?'),
-                  actions: [
-                    FlatButton(
-                      child: Text('Não'),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    FlatButton(
-                      child: Text('Sim'),
-                      onPressed: remove(),
-                    ),
-                  ],
-                ));
-      });
-}
+class _ContactListState extends State<ContactList> {
+  final _back = ContactListBack();
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-      appBar: AppBar(
-        title: Text('Lista de Contatos'),
-        actions: [IconButton(icon: Icon(Icons.add), onPressed: () {})],
-      ),
-      body: Observer(builder: (context) {
-        return FutureBuilder(
-            future: _back.list,
-            builder: (context, futuro) {
-              if (!futuro.hasData) {
-                return CircularProgressIndicator();
-              } else {
-                List<Contact> lista = futuro.data;
-                return ListView.builder(
-                  itemCount: lista.length,
-                  itemBuilder: (context, i) {
-                    var contato = lista[i];
-                    return ListTile(
-                      title: Text(contato.raca),
-                      onTap: () {
-                        _back.goToDetails(context, contato);
-                      },
-                      subtitle: Text(contato.telefone),
-                      trailing: Container(
-                        width: 100,
-                        child: Row(
-                          children: [
-                            iconEditButton(() {
-                              _back.goToForm(context, contato);
-                            }),
-                            iconRemoveButton(context, () {
-                              _back.remove(contato.id);
-                              Navigator.of(context).pop();
-                            })
-                          ],
-                        ),
+  Widget iconEditButton(Function onPressed) {
+    return IconButton(
+        icon: Icon(Icons.edit), color: Colors.blueGrey, onPressed: onPressed());
+  }
+
+  Widget iconRemoveButton(BuildContext context, Function remove) {
+    return IconButton(
+        icon: Icon(Icons.delete),
+        color: Colors.red,
+        onPressed: () {
+          showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                    title: Text('Deletar Registro'),
+                    content: Text('Deseja Deletar este registro?'),
+                    actions: [
+                      FlatButton(
+                        child: Text('Não'),
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
                       ),
-                    );
-                  },
-                );
-              }
-            });
-      }));
+                      FlatButton(
+                        child: Text('Sim'),
+                        onPressed: remove(),
+                      ),
+                    ],
+                  ));
+        });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(
+          title: Text('Lista de Contatos'),
+          actions: [IconButton(icon: Icon(Icons.add), onPressed: () {})],
+        ),
+        body: Observer(builder: (context) {
+          return FutureBuilder(
+              future: _back.list,
+              builder: (context, futuro) {
+                if (!futuro.hasData) {
+                  return CircularProgressIndicator();
+                } else {
+                  var lista = futuro.data as List<Contact>;
+                  return ListView.builder(
+                    itemCount: lista.length,
+                    itemBuilder: (context, i) {
+                      var contato = lista[i];
+                      return ListTile(
+                        title: Text(contato.raca!),
+                        onTap: () {
+                          _back.goToDetails(context, contato);
+                        },
+                        subtitle: Text(contato.telefone!),
+                        trailing: Container(
+                          width: 100,
+                          child: Row(
+                            children: [
+                              iconEditButton(() {
+                                _back.goToForm(context, contato);
+                              }),
+                              iconRemoveButton(context, () {
+                                _back.remove(contato.id!);
+                                Navigator.of(context).pop();
+                              })
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                }
+              });
+        }));
+  }
 }

@@ -1,16 +1,16 @@
 class Contact {
-  int id;
-  String raca;
-  String telefone;
-  int valor;
-  String descricao;
+  int? id;
+  String? raca;
+  String? telefone;
+  int? valor;
+  String? descricao;
 
   Contact({
-    required this.id,
-    required this.raca,
-    required this.telefone,
-    required this.valor,
-    required this.descricao,
+    this.id,
+    this.raca,
+    this.telefone,
+    this.valor,
+    this.descricao,
   });
 
   // get valor => null;

@@ -1,29 +1,31 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/domain/entities/contact.dart';
 import 'package:flutter_application_1/app/domain/services/contact_service.dart';
 import 'package:get_it/get_it.dart';
 // import 'package:mobx/mobx.dart';
 
 class ContactFormBack {
-  Contact contact;
+  Contact? contact;
   var _service = GetIt.I.get<ContactService>();
-  bool _racaIsValid;
+  bool? _racaIsValid;
   // bool _descricaoIsValid;
-  bool _phoneIsValid;
+  bool? _phoneIsValid;
   // bool _valorIsValid;
 
-  bool get isValid => _racaIsValid && _descricaoIsValid && _phoneIsValid;
+  bool get isValid => (_racaIsValid ?? false) && (_phoneIsValid ?? false);
 
   ContactFormBack(BuildContext context) {
-    var parameter = ModalRoute.of(context).settings.arguments;
-    contact = (parameter == null) ? Contact() : parameter;
+    var parameter = ModalRoute.of(context)!.settings.arguments;
+    contact = (parameter == null) ? Contact() : parameter as Contact;
   }
 
   save() async {
-    await _service.save(contact);
+    await _service.save(contact!);
   }
 
-  String validateRaca(String raca) {
+  String? validateRaca(String? raca) {
     try {
-      _service.validadeRaca(raca);
+      _service.validadeRaca(raca!);
       _racaIsValid = true;
       return null;
     } catch (e) {
@@ -32,9 +34,9 @@ class ContactFormBack {
     }
   }
 
-  String validatePhone(String phone) {
+  String? validatePhone(String? phone) {
     try {
-      _service.validadePhone(phone);
+      _service.validadePhone(phone!);
       _phoneIsValid = true;
       return null;
     } catch (e) {

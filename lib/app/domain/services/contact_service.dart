@@ -7,8 +7,8 @@ class ContactService {
   var _dao = GetIt.I.get<ContactDao>();
 
   save(Contact contact) {
-    validadeRaca(contact.raca);
-    validadePhone(contact.telefone);
+    validadeRaca(contact.raca!);
+    validadePhone(contact.telefone!);
     _dao.save(contact);
   }
 

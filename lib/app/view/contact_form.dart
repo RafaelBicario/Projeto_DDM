@@ -9,15 +9,15 @@ class ContactForm extends StatelessWidget {
   Widget fieldRaca(ContactFormBack back) {
     return TextFormField(
         validator: back.validateRaca,
-        onSaved: (newValue) => back.contact.raca = newValue,
-        initialValue: back.contact.nome,
+        onSaved: (newValue) => back.contact?.raca = newValue,
+        initialValue: back.contact?.raca ?? '',
         decoration: InputDecoration(
             labelText: 'Raça: ', hintText: 'Informe a Raça do Animal'));
   }
 
   Widget fieldDescricao(ContactFormBack back) {
     return TextFormField(
-        initialValue: back.contact.descricao,
+        initialValue: back.contact?.descricao ?? '',
         decoration: InputDecoration(
             labelText: 'Descrição:', hintText: 'Descrição do Problema'));
   }
@@ -26,8 +26,8 @@ class ContactForm extends StatelessWidget {
     var mask = MaskTextInputFormatter(mask: '(##) # ####-####');
     return TextFormField(
         validator: back.validatePhone,
-        onSaved: (newValue) => back.contact.phone = newValue,
-        initialValue: back.contact.phone,
+        onSaved: (newValue) => back.contact?.telefone = newValue,
+        initialValue: back.contact?.telefone ?? '',
         inputFormatters: [mask],
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
@@ -36,7 +36,8 @@ class ContactForm extends StatelessWidget {
 
   Widget fieldValor(ContactFormBack back) {
     return TextFormField(
-        initialValue: back.contact.valor,
+        initialValue:
+            back.contact?.valor == null ? '' : back.contact?.valor.toString(),
         decoration: InputDecoration(
             labelText: 'Valor:', hintText: 'Valor do Atendimento: '));
   }

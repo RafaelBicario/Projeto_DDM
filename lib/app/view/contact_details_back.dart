@@ -4,10 +4,10 @@ import 'package:url_launcher/url_launcher.dart';
 
 class ContactDetailsBack {
   BuildContext context;
-  Contact contact;
+  Contact? contact;
 
   ContactDetailsBack(this.context) {
-    contact = ModalRoute.of(context).settings.arguments;
+    contact = ModalRoute.of(context)!.settings.arguments as Contact;
   }
 
   goToBack() {
@@ -19,6 +19,6 @@ class ContactDetailsBack {
   }
 
   launchPhone(Function(BuildContext context) showModalError) {
-    _launchApp('tel:${contact.telefone}', showModalError);
+    _launchApp('tel:${contact!.telefone}', showModalError);
   }
 }
