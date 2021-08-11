@@ -16,7 +16,7 @@ class ContactDAOimpl implements ContactDao {
       return Contact(
           telefone: linha['telefone'],
           descricao: linha['descricao'],
-          valor: linha['valor'],
+          valor: linha['valor'] + 0.0,
           id: linha['id'],
           raca: linha['raca']);
     });
@@ -41,7 +41,7 @@ class ContactDAOimpl implements ContactDao {
           [contact.raca, contact.telefone, contact.descricao, contact.valor]);
     } else {
       sql =
-          'UPDATE contact SET raca =?, telefone = ?, descricao = ?, descricao = ?,  = ? WHERE id = ? ';
+          'UPDATE contact SET raca =?, telefone = ?, descricao = ?, valor = ?,  = ? WHERE id = ? ';
       _db!.rawUpdate(sql,
           [contact.raca, contact.telefone, contact.descricao, contact.valor]);
     }

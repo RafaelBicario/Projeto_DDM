@@ -8,7 +8,7 @@ class ContactService {
 
   save(Contact contact) {
     validadeRaca(contact.raca!);
-    validadePhone(contact.telefone!);
+    // validadePhone(contact.telefone!);
     _dao.save(contact);
   }
 
@@ -20,7 +20,7 @@ class ContactService {
     return _dao.find();
   }
 
-  validadeRaca(String raca) {
+  validadeRaca(String? raca) {
     var min = 3;
     var max = 50;
 
@@ -34,12 +34,12 @@ class ContactService {
     }
   }
 
-  validadePhone(String phone) {
-    var format = RegExp(' ');
-    if (phone == null) {
-      throw DomainLayerException('O Telefone é Obrigatório');
-    } else if (!format.hasMatch(phone)) {
-      throw new DomainLayerException('Formato Invalido');
-    }
-  }
+  // validadePhone(String? telefone) {
+  //   var format = RegExp(r'^([1-9]{2}) [9] [6-9]{1}[0-9]{3}-[0-9]{4}$');
+  //   if (telefone == null) {
+  //     throw DomainLayerException('O Telefone é Obrigatório');
+  //   } else if (!format.hasMatch(telefone)) {
+  //     throw new DomainLayerException('Formato Invalido');
+  //   }
+  // }
 }

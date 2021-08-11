@@ -47,16 +47,16 @@ class ContactDetails extends StatelessWidget {
                     trailing: Container(
                         width: width / 4,
                         child: Row(children: [
-                          IconButton(
-                              color: Colors.blue,
-                              icon: Icon(Icons.message),
-                              onPressed: () {
-                                _back.launchPhone(showModalError(context));
-                              }),
-                          IconButton(
-                              color: Colors.blue,
-                              icon: Icon(Icons.phone),
-                              onPressed: () {})
+                          // IconButton(
+                          //     color: Colors.blue,
+                          //     icon: Icon(Icons.message),
+                          //     onPressed: () {
+                          //       _back.launchPhone(showModalError(context));
+                          //     }),
+                          // IconButton(
+                          //     color: Colors.blue,
+                          //     icon: Icon(Icons.phone),
+                          //     onPressed: () {})
                         ]))),
               ),
             ],

@@ -2,7 +2,7 @@ class Contact {
   int? id;
   String? raca;
   String? telefone;
-  int? valor;
+  double? valor;
   String? descricao;
 
   Contact({

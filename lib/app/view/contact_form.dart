@@ -18,6 +18,7 @@ class ContactForm extends StatelessWidget {
   Widget fieldDescricao(ContactFormBack back) {
     return TextFormField(
         initialValue: back.contact?.descricao ?? '',
+        onSaved: (newValue) => back.contact?.descricao = newValue,
         decoration: InputDecoration(
             labelText: 'Descrição:', hintText: 'Descrição do Problema'));
   }
@@ -26,7 +27,7 @@ class ContactForm extends StatelessWidget {
     var mask = MaskTextInputFormatter(mask: '(##) # ####-####');
     return TextFormField(
         validator: back.validatePhone,
-        onSaved: (newValue) => back.contact?.telefone = newValue,
+        onSaved: (newValue) => back.contact!.telefone = newValue,
         initialValue: back.contact?.telefone ?? '',
         inputFormatters: [mask],
         keyboardType: TextInputType.number,
@@ -36,8 +37,10 @@ class ContactForm extends StatelessWidget {
 
   Widget fieldValor(ContactFormBack back) {
     return TextFormField(
+        onSaved: (newValue) => back.contact?.valor = newValue as double,
         initialValue:
             back.contact?.valor == null ? '' : back.contact?.valor.toString(),
+        keyboardType: TextInputType.number,
         decoration: InputDecoration(
             labelText: 'Valor:', hintText: 'Valor do Atendimento: '));
   }

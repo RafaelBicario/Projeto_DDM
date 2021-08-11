@@ -10,7 +10,7 @@ class ContactFormBack {
   bool? _racaIsValid;
   // bool _descricaoIsValid;
   bool? _phoneIsValid;
-  // bool _valorIsValid;
+  // bool? _valorIsValid;
 
   bool get isValid => (_racaIsValid ?? false) && (_phoneIsValid ?? false);
 
@@ -34,9 +34,9 @@ class ContactFormBack {
     }
   }
 
-  String? validatePhone(String? phone) {
+  String? validatePhone(String? telefone) {
     try {
-      _service.validadePhone(phone!);
+      // _service.validadePhone(telefone!);
       _phoneIsValid = true;
       return null;
     } catch (e) {

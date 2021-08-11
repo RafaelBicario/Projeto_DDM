@@ -25,9 +25,11 @@ class ContactList extends StatefulWidget {
 class _ContactListState extends State<ContactList> {
   final _back = ContactListBack();
 
-  Widget iconEditButton(Function onPressed) {
+  Widget iconEditButton() {
     return IconButton(
-        icon: Icon(Icons.edit), color: Colors.blueGrey, onPressed: onPressed());
+        icon: Icon(Icons.edit),
+        color: Colors.blueGrey,
+        onPressed: () => _back.goToForm(context));
   }
 
   Widget iconRemoveButton(BuildContext context, Function remove) {
@@ -41,15 +43,15 @@ class _ContactListState extends State<ContactList> {
                     title: Text('Deletar Registro'),
                     content: Text('Deseja Deletar este registro?'),
                     actions: [
-                      FlatButton(
+                      TextButton(
                         child: Text('Não'),
                         onPressed: () {
                           Navigator.of(context).pop();
                         },
                       ),
-                      FlatButton(
+                      TextButton(
                         child: Text('Sim'),
-                        onPressed: remove(),
+                        onPressed: () => remove(),
                       ),
                     ],
                   ));
@@ -61,7 +63,15 @@ class _ContactListState extends State<ContactList> {
     return Scaffold(
         appBar: AppBar(
           title: Text('Lista de Contatos'),
-          actions: [IconButton(icon: Icon(Icons.add), onPressed: () {})],
+          actions: [
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () => _back.goToForm(context),
+              // onPressed: () {
+              //   Navigator.of(context).pushNamed('contact-form').then(() => _back.refreshList() );
+              // }
+            )
+          ],
         ),
         body: Observer(builder: (context) {
           return FutureBuilder(
@@ -85,9 +95,7 @@ class _ContactListState extends State<ContactList> {
                           width: 100,
                           child: Row(
                             children: [
-                              iconEditButton(() {
-                                _back.goToForm(context, contato);
-                              }),
+                              iconEditButton(),
                               iconRemoveButton(context, () {
                                 _back.remove(contato.id!);
                                 Navigator.of(context).pop();

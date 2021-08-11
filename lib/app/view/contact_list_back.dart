@@ -29,9 +29,7 @@ abstract class _ContactListBack with Store {
   }
 
   goToForm(BuildContext context, [Contact? contact]) {
-    Navigator.of(context)
-        .pushNamed(MyApp.CONTACT_FORM, arguments: contact)
-        .then(refreshList);
+    Navigator.of(context).pushNamed('contact-form').then(refreshList);
   }
 
   goToDetails(BuildContext context, Contact contact) {
