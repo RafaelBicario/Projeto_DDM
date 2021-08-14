@@ -18,7 +18,8 @@ class ContactDAOFirestore implements ContactDao {
             raca: doc['raca'],
             telefone: doc['telefone'],
             descricao: doc['descricao'],
-            valor: doc['valor']))
+            valor: doc['valor'],
+            data_cadastro: doc['data_cadastro']))
         .toList();
   }
 
@@ -33,7 +34,8 @@ class ContactDAOFirestore implements ContactDao {
       'raca': contact.raca,
       'telefone': contact.telefone,
       'descricao': contact.descricao,
-      'valor': contact.valor
+      'valor': contact.valor,
+      'data_cadastro': contact.data_cadastro
     });
   }
 }

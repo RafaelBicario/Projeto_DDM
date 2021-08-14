@@ -49,16 +49,15 @@ class ContactDetails extends StatelessWidget {
                 child: ListTile(
                     title: Text('Valor'),
                     subtitle: Text('${contact.valor ?? 0}'),
-                    trailing: Container(
-                        width: width / 4,
-                        child: Row(children: [
-                          // IconButton(
-                          //     color: Colors.blue,
-                          //     icon: Icon(Icons.phone),
-                          //     onPressed: () {
-                          //       _back.launchPhone(showModalError(context));
-                          //     }),
-                        ]))),
+                    trailing:
+                        Container(width: width / 4, child: Row(children: []))),
+              ),
+              Card(
+                child: ListTile(
+                    title: Text('Data'),
+                    subtitle: Text('${contact.data_cadastro}'),
+                    trailing:
+                        Container(width: width / 4, child: Row(children: []))),
               ),
             ],
           ),

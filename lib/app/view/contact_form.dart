@@ -11,8 +11,8 @@ class ContactForm extends StatelessWidget {
         validator: back.validateRaca,
         onSaved: (newValue) => back.contact?.raca = newValue,
         initialValue: back.contact?.raca ?? '',
-        decoration: InputDecoration(
-            labelText: 'Raça: ', hintText: 'Informe a Raça do Animal'));
+        decoration:
+            InputDecoration(labelText: 'Raça: ', hintText: 'Raça do Animal'));
   }
 
   Widget fieldDescricao(ContactFormBack back) {
@@ -45,6 +45,20 @@ class ContactForm extends StatelessWidget {
             labelText: 'Valor:', hintText: 'Valor do Atendimento: '));
   }
 
+  Widget fieldData(ContactFormBack back) {
+    var mask = MaskTextInputFormatter(mask: '##/##/##');
+    return TextFormField(
+        onSaved: (newValue) => back.contact?.data_cadastro = newValue,
+        initialValue: back.contact?.data_cadastro == null
+            ? ''
+            : back.contact?.data_cadastro.toString(),
+        inputFormatters: [mask],
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(
+            labelText: 'Data do Atendimento:',
+            hintText: 'Data do Atendimento '));
+  }
+
   @override
   Widget build(BuildContext context) {
     var _back = ContactFormBack(context);
@@ -52,18 +66,7 @@ class ContactForm extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.grey,
         title: Text('Cadastro de Atendimentos'),
-        actions: [
-          // IconButton(
-          //     icon: Icon(Icons.save),
-          //     onPressed: () {
-          //       _form.currentState!.validate();
-          //       _form.currentState!.save();
-          //       if (_back.isValid) {
-          //         _back.save();
-          //         Navigator.of(context).pop();
-          //       }
-          //     })
-        ],
+        actions: [],
       ),
       body: Padding(
         padding: EdgeInsets.all(10),
@@ -74,6 +77,7 @@ class ContactForm extends StatelessWidget {
             fieldDescricao(_back),
             fieldPhone(_back),
             fieldValor(_back),
+            fieldData(_back),
             IconButton(
               icon: Icon(Icons.add),
               onPressed: () {

@@ -18,7 +18,8 @@ class ContactDAOimpl implements ContactDao {
           descricao: linha['descricao'],
           valor: linha['valor'] + 0.0,
           id: linha['id'],
-          raca: linha['raca']);
+          raca: linha['raca'],
+          data_cadastro: linha['data_cadastro']);
     });
     return lista;
   }
