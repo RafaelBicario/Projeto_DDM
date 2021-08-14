@@ -29,14 +29,16 @@ abstract class _ContactListBack with Store {
   }
 
   goToForm(BuildContext context, [Contact? contact]) {
-    Navigator.of(context).pushNamed('contact-form').then(refreshList);
+    Navigator.of(context)
+        .pushNamed(MyApp.CONTACT_FORM, arguments: contact)
+        .then(refreshList);
   }
 
   goToDetails(BuildContext context, Contact contact) {
     Navigator.of(context).pushNamed(MyApp.CONTACT_DETAILS, arguments: contact);
   }
 
-  remove(int id) {
+  remove(dynamic id) {
     _service.remove(id);
     refreshList();
   }

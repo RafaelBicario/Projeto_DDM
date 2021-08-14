@@ -1,5 +1,5 @@
 class Contact {
-  int? id;
+  dynamic id;
   String? raca;
   String? telefone;
   double? valor;

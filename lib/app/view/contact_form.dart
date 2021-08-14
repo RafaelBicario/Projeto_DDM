@@ -37,7 +37,7 @@ class ContactForm extends StatelessWidget {
 
   Widget fieldValor(ContactFormBack back) {
     return TextFormField(
-        onSaved: (newValue) => back.contact?.valor = newValue as double,
+        onSaved: (newValue) => back.contact?.valor = double.parse(newValue!),
         initialValue:
             back.contact?.valor == null ? '' : back.contact?.valor.toString(),
         keyboardType: TextInputType.number,
@@ -50,18 +50,19 @@ class ContactForm extends StatelessWidget {
     var _back = ContactFormBack(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.grey,
         title: Text('Cadastro de Atendimentos'),
         actions: [
-          IconButton(
-              icon: Icon(Icons.save),
-              onPressed: () {
-                _form.currentState!.validate();
-                _form.currentState!.save();
-                if (_back.isValid) {
-                  _back.save();
-                  Navigator.of(context).pop();
-                }
-              })
+          // IconButton(
+          //     icon: Icon(Icons.save),
+          //     onPressed: () {
+          //       _form.currentState!.validate();
+          //       _form.currentState!.save();
+          //       if (_back.isValid) {
+          //         _back.save();
+          //         Navigator.of(context).pop();
+          //       }
+          //     })
         ],
       ),
       body: Padding(
@@ -73,6 +74,17 @@ class ContactForm extends StatelessWidget {
             fieldDescricao(_back),
             fieldPhone(_back),
             fieldValor(_back),
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: () {
+                _form.currentState!.validate();
+                _form.currentState!.save();
+                if (_back.isValid) {
+                  _back.save();
+                  Navigator.of(context).pop();
+                }
+              },
+            )
           ]),
         ),
       ),

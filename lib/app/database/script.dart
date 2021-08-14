@@ -6,7 +6,6 @@ CREATE TABLE contact(
   ,descricao VARCHAR(100) NOT NULL
   ,valor DECIMAL(6,2) NULL
   ,data_cadastro DATETIME DEFAULT CURRENT_TIMESTAMP
-  ,status CHAR(1) DEFAULT 'A' 
 );
 ''';
 

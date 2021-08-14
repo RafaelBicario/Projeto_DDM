@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/database/sqlite/connection.dart';
 import 'package:flutter_application_1/app/domain/entities/contact.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:sqflite/sqflite.dart';
-
-import '../my_app.dart';
 import 'contact_list_back.dart';
 
 // class Contatos extends StatefulWidget {
@@ -25,11 +21,11 @@ class ContactList extends StatefulWidget {
 class _ContactListState extends State<ContactList> {
   final _back = ContactListBack();
 
-  Widget iconEditButton() {
+  Widget iconEditButton(BuildContext context, Contact contact) {
     return IconButton(
         icon: Icon(Icons.edit),
-        color: Colors.blueGrey,
-        onPressed: () => _back.goToForm(context));
+        color: Colors.black,
+        onPressed: () => _back.goToForm(context, contact));
   }
 
   Widget iconRemoveButton(BuildContext context, Function remove) {
@@ -41,7 +37,7 @@ class _ContactListState extends State<ContactList> {
               context: context,
               builder: (context) => AlertDialog(
                     title: Text('Deletar Registro'),
-                    content: Text('Deseja Deletar este registro?'),
+                    content: Text('Deseja deletar este atendimento ?'),
                     actions: [
                       TextButton(
                         child: Text('Não'),
@@ -62,15 +58,15 @@ class _ContactListState extends State<ContactList> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Lista de Contatos'),
+          backgroundColor: Colors.grey,
+          title: Text('Lista de Atendimentos'),
           actions: [
             IconButton(
-              icon: Icon(Icons.add),
-              onPressed: () => _back.goToForm(context),
-              // onPressed: () {
-              //   Navigator.of(context).pushNamed('contact-form').then(() => _back.refreshList() );
-              // }
-            )
+                icon: Icon(Icons.add), onPressed: () => _back.goToForm(context)
+                // onPressed: () {
+                //   Navigator.of(context).pushNamed('contact-form').then(() => _back.refreshList() );
+                // }
+                )
           ],
         ),
         body: Observer(builder: (context) {
@@ -95,7 +91,7 @@ class _ContactListState extends State<ContactList> {
                           width: 100,
                           child: Row(
                             children: [
-                              iconEditButton(),
+                              iconEditButton(context, contato),
                               iconRemoveButton(context, () {
                                 _back.remove(contato.id!);
                                 Navigator.of(context).pop();

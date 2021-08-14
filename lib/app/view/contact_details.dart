@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/domain/entities/contact.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import 'contact_details_back.dart';
 
@@ -42,6 +41,12 @@ class ContactDetails extends StatelessWidget {
               ),
               Card(
                 child: ListTile(
+                  title: Text('Descrição do Problema'),
+                  subtitle: Text('${contact.descricao}'),
+                ),
+              ),
+              Card(
+                child: ListTile(
                     title: Text('Valor'),
                     subtitle: Text('${contact.valor ?? 0}'),
                     trailing: Container(
@@ -49,14 +54,10 @@ class ContactDetails extends StatelessWidget {
                         child: Row(children: [
                           // IconButton(
                           //     color: Colors.blue,
-                          //     icon: Icon(Icons.message),
+                          //     icon: Icon(Icons.phone),
                           //     onPressed: () {
                           //       _back.launchPhone(showModalError(context));
                           //     }),
-                          // IconButton(
-                          //     color: Colors.blue,
-                          //     icon: Icon(Icons.phone),
-                          //     onPressed: () {})
                         ]))),
               ),
             ],
