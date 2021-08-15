@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/domain/entities/contact.dart';
 
-import 'contact_details_back.dart';
+import 'app_details_back.dart';
 
 class ContactDetails extends StatelessWidget {
   showModalError(BuildContext context) {
@@ -28,7 +28,6 @@ class ContactDetails extends StatelessWidget {
 
         return Scaffold(
           body: ListView(
-            // padding:EdgeInserts.all(60),
             children: [
               Center(
                 child: Text('${contact!.raca}', style: TextStyle(fontSize: 30)),

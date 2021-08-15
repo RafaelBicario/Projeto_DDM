@@ -4,7 +4,8 @@ class Contact {
   String? telefone;
   double? valor;
   String? descricao;
-  dynamic? data_cadastro;
+  // ignore: non_constant_identifier_names
+  dynamic data_cadastro;
 
   Contact(
       {this.id,
@@ -12,7 +13,6 @@ class Contact {
       this.telefone,
       this.valor,
       this.descricao,
+      // ignore: non_constant_identifier_names
       this.data_cadastro});
-
-  // get valor => null;
 }

@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'contact_list_back.dart';
+part of 'app_list_back.dart';
 
 // **************************************************************************
 // StoreGenerator

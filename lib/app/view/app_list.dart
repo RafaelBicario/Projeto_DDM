@@ -1,15 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/domain/entities/contact.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'contact_list_back.dart';
-
-// class Contatos extends StatefulWidget {
-//   const Contatos({Key? key}) : super(key: key);
-//   Future<List<Map<String, dynamic>>> _buscar() async {
-//     Database? db = await Connection.get();
-//     return db!.query('dados');
-//   }
-// }
+import 'app_list_back.dart';
 
 class ContactList extends StatefulWidget {
   const ContactList({Key? key}) : super(key: key);
@@ -62,11 +54,7 @@ class _ContactListState extends State<ContactList> {
           title: Text('Lista de Atendimentos'),
           actions: [
             IconButton(
-                icon: Icon(Icons.add), onPressed: () => _back.goToForm(context)
-                // onPressed: () {
-                //   Navigator.of(context).pushNamed('contact-form').then(() => _back.refreshList() );
-                // }
-                )
+                icon: Icon(Icons.add), onPressed: () => _back.goToForm(context))
           ],
         ),
         body: Observer(builder: (context) {
@@ -86,7 +74,7 @@ class _ContactListState extends State<ContactList> {
                         onTap: () {
                           _back.goToDetails(context, contato);
                         },
-                        subtitle: Text(contato.telefone!),
+                        subtitle: Text(contato.data_cadastro!),
                         trailing: Container(
                           width: 100,
                           child: Row(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import 'contact_form_back.dart';
+import 'app_form_back.dart';
 
 class ContactForm extends StatelessWidget {
   final _form = GlobalKey<FormState>();
@@ -80,6 +80,7 @@ class ContactForm extends StatelessWidget {
             fieldData(_back),
             IconButton(
               icon: Icon(Icons.add),
+              iconSize: 35,
               onPressed: () {
                 _form.currentState!.validate();
                 _form.currentState!.save();

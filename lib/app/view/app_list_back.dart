@@ -6,7 +6,7 @@ import 'package:mobx/mobx.dart';
 
 import '../my_app.dart';
 
-part 'contact_list_back.g.dart';
+part 'app_list_back.g.dart';
 
 // comando:
 // flutter packages pub run build_runner watch

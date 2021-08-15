@@ -1,5 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_application_1/app/database/firestore/contact_dao_firestore.dart';
 import 'package:flutter_application_1/app/domain/interfaces/contact_dao.dart';
 import 'package:flutter_application_1/app/domain/services/contact_service.dart';

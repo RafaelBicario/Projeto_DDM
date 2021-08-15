@@ -8,7 +8,6 @@ class ContactService {
 
   save(Contact contact) {
     validadeRaca(contact.raca!);
-    // validadePhone(contact.telefone!);
     _dao.save(contact);
   }
 
@@ -33,13 +32,4 @@ class ContactService {
       throw new DomainLayerException('Limite de Caractéres atingido');
     }
   }
-
-  // validadePhone(String? telefone) {
-  //   var format = RegExp(r'^([1-9]{2}) [9] [6-9]{1}[0-9]{3}-[0-9]{4}$');
-  //   if (telefone == null) {
-  //     throw DomainLayerException('O Telefone é Obrigatório');
-  //   } else if (!format.hasMatch(telefone)) {
-  //     throw new DomainLayerException('Formato Invalido');
-  //   }
-  // }
 }

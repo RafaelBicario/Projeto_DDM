@@ -8,9 +8,7 @@ class ContactFormBack {
   Contact? contact;
   var _service = GetIt.I.get<ContactService>();
   bool? _racaIsValid;
-  // bool _descricaoIsValid;
   bool? _phoneIsValid;
-  // bool? _valorIsValid;
 
   bool get isValid => (_racaIsValid ?? false) && (_phoneIsValid ?? false);
 
@@ -36,7 +34,6 @@ class ContactFormBack {
 
   String? validatePhone(String? telefone) {
     try {
-      // _service.validadePhone(telefone!);
       _phoneIsValid = true;
       return null;
     } catch (e) {
