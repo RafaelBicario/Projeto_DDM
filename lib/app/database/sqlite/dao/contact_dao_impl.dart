@@ -1,5 +1,5 @@
 import 'package:flutter_application_1/app/domain/entities/contact.dart';
-import 'package:flutter_application_1/app/domain/interfaces/contact_dao.dart';
+import 'package:flutter_application_1/app/domain/interfaces/app_dao.dart';
 import 'package:sqflite/sqflite.dart';
 
 import '../connection.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter_application_1/app/domain/entities/contact.dart';
 import 'package:flutter_application_1/app/domain/exception/domain_layer_exception.dart';
-import 'package:flutter_application_1/app/domain/interfaces/contact_dao.dart';
+import 'package:flutter_application_1/app/domain/interfaces/app_dao.dart';
 import 'package:get_it/get_it.dart';
 
 class ContactService {
