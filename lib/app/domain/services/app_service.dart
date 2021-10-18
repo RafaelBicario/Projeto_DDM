@@ -6,13 +6,13 @@ import 'package:get_it/get_it.dart';
 class ContactService {
   var _dao = GetIt.I.get<ContactDao>();
 
-  save(Contact contact) {
+  save(Contact contact) async{
     validadeRaca(contact.raca!);
-    _dao.save(contact);
+    await _dao.save(contact);
   }
 
-  remove(dynamic id) {
-    _dao.remove(id);
+  remove(dynamic id) async{
+    await _dao.remove(id);
   }
 
   Future<List<Contact>> find() {

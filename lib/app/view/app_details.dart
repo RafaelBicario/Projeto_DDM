@@ -24,7 +24,7 @@ class ContactDetails extends StatelessWidget {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         var width = constraints.biggest.width;
-        var height = constraints.biggest.height;
+        // var height = constraints.biggest.height;
 
         return Scaffold(
           body: ListView(

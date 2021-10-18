@@ -17,8 +17,9 @@ class ContactFormBack {
     contact = (parameter == null) ? Contact() : parameter as Contact;
   }
 
-  save() async {
+  save(BuildContext context) async {
     await _service.save(contact!);
+    Navigator.of(context).pop();
   }
 
   String? validateRaca(String? raca) {

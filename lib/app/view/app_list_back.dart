@@ -38,8 +38,9 @@ abstract class _ContactListBack with Store {
     Navigator.of(context).pushNamed(MyApp.CONTACT_DETAILS, arguments: contact);
   }
 
-  remove(dynamic id) {
-    _service.remove(id);
+  remove(dynamic id, BuildContext context) async{
+    await _service.remove(id);
     refreshList();
+    Navigator.of(context).pop();
   }
 }

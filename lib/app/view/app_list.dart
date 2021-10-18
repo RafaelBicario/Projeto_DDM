@@ -81,8 +81,7 @@ class _ContactListState extends State<ContactList> {
                             children: [
                               iconEditButton(context, contato),
                               iconRemoveButton(context, () {
-                                _back.remove(contato.id!);
-                                Navigator.of(context).pop();
+                                _back.remove(contato.id, context);
                               })
                             ],
                           ),
